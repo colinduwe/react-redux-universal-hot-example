@@ -16,21 +16,21 @@ module.exports = Object.assign(
     apiHost: process.env.APIHOST || 'localhost',
     apiPort: process.env.APIPORT,
     app: {
-      title: 'React Redux Example',
-      description: 'All the modern best practices in one example.',
+      title: 'Service Course',
+      description: 'Use the Strava API data to stay on top of your bike maintenance.',
       head: {
-        titleTemplate: 'React Redux Example: %s',
+        titleTemplate: 'Service Course: %s',
         meta: [
-          { name: 'description', content: 'All the modern best practices in one example.' },
+          { name: 'description', content: 'Use the Strava API data to stay on top of your bike maintenance.' },
           { charset: 'utf-8' },
-          { property: 'og:site_name', content: 'React Redux Example' },
+          { property: 'og:site_name', content: 'Service Course' },
           { property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg' },
           { property: 'og:locale', content: 'en_US' },
-          { property: 'og:title', content: 'React Redux Example' },
-          { property: 'og:description', content: 'All the modern best practices in one example.' },
+          { property: 'og:title', content: 'Service Course' },
+          { property: 'og:description', content: 'Use the Strava API data to stay on top of your bike maintenance.' },
           { property: 'og:card', content: 'summary' },
-          { property: 'og:site', content: '@erikras' },
-          { property: 'og:creator', content: '@erikras' },
+          { property: 'og:site', content: '@colinduwe' },
+          { property: 'og:creator', content: '@colinduwe' },
           { property: 'og:image:width', content: '200' },
           { property: 'og:image:height', content: '200' }
         ]

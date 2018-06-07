@@ -36,7 +36,7 @@ export default class Home extends Component {
             <p>
               <a
                 className={styles.github}
-                href="https://github.com/bertho-zero/react-redux-universal-hot-example"
+                href="https://github.com/colinduwe/service-course"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -44,30 +44,18 @@ export default class Home extends Component {
               </a>
             </p>
             {online && (
-              <GithubButton
-                user="bertho-zero"
-                repo="react-redux-universal-hot-example"
-                type="star"
-                width={160}
-                height={30}
-                count
-                large
-              />
+              <GithubButton user="colinduwe" repo="service-course" type="star" width={160} height={30} count large />
             )}
             {online && (
-              <GithubButton
-                user="bertho-zero"
-                repo="react-redux-universal-hot-example"
-                type="fork"
-                width={160}
-                height={30}
-                count
-                large
-              />
+              <GithubButton user="colinduwe" repo="service-course" type="fork" width={160} height={30} count large />
             )}
 
             <p className={styles.humility}>
               Created by{' '}
+              <a href="https://twitter.com/colinduwe" target="_blank" rel="noopener noreferrer">
+                @colinduwe
+              </a>{' '}
+              based on react-redux-universal-hot-example by{' '}
               <a href="https://twitter.com/erikras" target="_blank" rel="noopener noreferrer">
                 @erikras
               </a>{' '}
