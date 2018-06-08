@@ -15,7 +15,11 @@ const schemaValidator = {
 function validate() {
   return context => {
     if (context.data.facebook && !context.data.email) {
-      throw new errors.BadRequest('Incomplete oauth registration', context.data);
+      if (context.data.facebook.profile.emails[0].value) {
+        context.data.email = context.data.facebook.profile.emails[0].value;
+      } else {
+        throw new errors.BadRequest('Incomplete oauth registration', context.data);
+      }
     }
     return validateHook(schemaValidator)(context);
   };

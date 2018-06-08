@@ -74,7 +74,7 @@ export default class Login extends Component {
             <LoginForm onSubmit={this.onLocalLogin} />
             <p>This will "log you in" as this user, storing the username in the session of the API server.</p>
             <FacebookLogin
-              appId="635147529978862"
+              appId="293926717366312"
               /* autoLoad={true} */
               fields="name,email,picture"
               onLogin={this.onFacebookLogin}
