@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import LoginForm from 'components/LoginForm/LoginForm';
 import FacebookLogin from 'components/FacebookLogin/FacebookLogin';
+import StravaLogin from 'components/StravaLogin/StravaLogin';
 import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
 
@@ -43,6 +44,24 @@ export default class Login extends Component {
     }
   };
 
+  onStravaLogin = async (err, data) => {
+    if (err) return;
+
+    try {
+      await this.props.login('strava', data);
+      this.successLogin();
+    } catch (error) {
+      if (error.message === 'Incomplete oauth registration') {
+        this.props.history.push({
+          pathname: '/register',
+          state: { oauth: error.data }
+        });
+      } else {
+        throw error;
+      }
+    }
+  };
+
   onLocalLogin = async data => {
     const result = await this.props.login('local', data);
     this.successLogin();
@@ -63,6 +82,12 @@ export default class Login extends Component {
     </button>
   );
 
+  StravaLoginButton = ({ stravaLogin }) => (
+    <button className="btn btn-primary connectwithstrava" onClick={stravaLogin}>
+      Connect with Strava<i className="fa fa-strava" />
+    </button>
+  );
+
   render() {
     const { user, logout } = this.props;
     return (
@@ -79,6 +104,12 @@ export default class Login extends Component {
               fields="name,email,picture"
               onLogin={this.onFacebookLogin}
               component={this.FacebookLoginButton}
+            />
+            <p>&nbsp;</p>
+            <StravaLogin
+              appId="4033"
+              onLogin={this.onStravaLogin}
+              // component={this.StravaLoginButton}
             />
           </div>
         )}

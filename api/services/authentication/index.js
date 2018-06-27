@@ -4,6 +4,7 @@ import local from '@feathersjs/authentication-local';
 // import oauth1 from '@feathersjs/authentication-oauth1';
 import oauth2 from '@feathersjs/authentication-oauth2';
 import FacebookTokenStrategy from 'passport-facebook-token';
+import { Strategy as StravaStrategy } from 'passport-strava';
 
 function populateUser() {
   return context => {
@@ -23,12 +24,16 @@ export default function authenticationService() {
     .configure(oauth2({
       name: 'facebook', // if the name differs from your config key you need to pass your config options explicitly
       Strategy: FacebookTokenStrategy
+    }))
+    .configure(oauth2({
+      name: 'strava', // if the name differs from your config key you need to pass your config options explicitly
+      Strategy: StravaStrategy
     }));
 
   app.service('authentication').hooks({
     before: {
       // You can chain multiple strategies on create method
-      create: auth.hooks.authenticate(['jwt', 'local', 'facebook']),
+      create: auth.hooks.authenticate(['jwt', 'local', 'facebook', 'strava']),
       remove: auth.hooks.authenticate('jwt')
     },
     after: {

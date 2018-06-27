@@ -20,6 +20,12 @@ function validate() {
       } else {
         throw new errors.BadRequest('Incomplete oauth registration', context.data);
       }
+    } else if (context.data.strava && !context.data.email) {
+      if (context.data.strava.profile._json.email) {
+        context.data.email = context.data.strava.profile._json.email;
+      } else {
+        throw new errors.BadRequest('Incomplete oauth registration', context.data);
+      }
     }
     return validateHook(schemaValidator)(context);
   };
